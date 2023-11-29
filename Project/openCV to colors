@@ -17,3 +17,15 @@ def to_yellow():
     dofik(angle-28, angle-90, angle-70, angle+85, angle, angle+57)
     time.sleep(1.5)
 to_yellow()
+
+
+
+
+import numpy as np
+import general_robotics_toolbox as rox #ik
+import time
+import math
+from Arm_Lib import Arm_Device #
+import math
+import numpy as np
+import general_robotics_toolbox as rox
