@@ -181,3 +181,52 @@ if __name__ == "__main__" :
     main()
     
 print("passed IK")
+
+
+
+class PIDController:
+    def __init__(self, P, I, D):
+        self.Kp = P
+        self.Ki = I
+        self.Kd = D
+        self.previous_error = 0
+        self.integral = 0
+
+    def update(self, error, dt):
+        # Proportional term
+        P_term = self.Kp * error
+        # Integral term
+        self.integral += error * dt
+        I_term = self.Ki * self.integral
+        # Derivative term
+        derivative = (error - self.previous_error) / dt
+        D_term = self.Kd * derivative
+        # Update previous error
+        self.previous_error = error
+        # Total output
+        return P_term + I_term + D_term
+2. Modify command_arm_to_follow_path Function
+This function needs to incorporate the PID controller to adjust the joint angles based on the feedback error.
+
+python
+Copy code
+def command_arm_to_follow_path_with_feedback(robot, path, s_time, pid_controllers):
+    for joint_angles in path:
+        actual_joint_angles = measure_actual_position(robot)
+        error = joint_angles - actual_joint_angles
+        adjusted_angles = []
+
+        for i in range(len(joint_angles)):
+            dt = 0.1  # Assuming 0.1 seconds as the time interval
+            adjustment = pid_controllers[i].update(error[i], dt)
+            adjusted_angles.append(joint_angles[i] + adjustment)
+
+        angles_in_degrees = np.array(adjusted_angles) * (180 / np.pi)
+        Arm.Arm_serial_servo_write6(*angles_in_degrees, 90, 1500)
+        time.sleep(dt)
+3. Instantiate PID Controllers
+Create a PID controller for each joint. You might need to tune the PID gains (P, I, D) through experimentation.
+
+python
+Copy code
+pid_controllers = [PIDController(P, I, D) for _ in range(5)]
