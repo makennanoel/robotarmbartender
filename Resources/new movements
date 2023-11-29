@@ -8,6 +8,14 @@ def to_yellow():
     time.sleep(2.5)
 to_yellow()
 
+def fill_from_drink_yellow():
+    time.sleep(3.0)
+    dofik(angle-15, angle-60, angle-70, angle+50, angle, angle+57)
+    time.sleep(3.0)
+    dofik(angle-12, angle-40, angle-107, angle+55, angle, angle+57)
+    time.sleep(2.25)
+    dofik(angle-8, angle-37, angle-107, angle+55, angle-90, angle+57)
+fill_from_drink_yellow()
 
 
 def to_red():
@@ -19,3 +27,13 @@ def to_red():
     dofik(angle+23, angle-90, angle-70, angle+85, angle, angle+57,2500)
     time.sleep(2.5)
 to_red()
+
+
+def fill_from_drink_red():
+    time.sleep(3.0)
+    dofik(angle+10, angle-60, angle-70, angle+50, angle, angle+57)
+    time.sleep(3.0)
+    dofik(angle+8, angle-40, angle-107, angle+55, angle, angle+57)
+    time.sleep(2.25)
+    dofik(angle+3, angle-37, angle-107, angle+55, angle+90, angle+57)
+fill_from_drink_red()
