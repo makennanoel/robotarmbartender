@@ -1,0 +1,19 @@
+def to_red():
+    dofik(90, 164, 18, 0, 90, 90)
+    time.sleep(1.5)
+    dofik(angle+28, angle-90, angle-70, angle+85, angle, angle)
+    time.sleep(1.5)
+    dofik(angle+28, angle-90, angle-70, angle+85, angle, angle+57)
+    time.sleep(1.5)
+to_red()
+
+
+
+def to_yellow():
+    dofik(90, 164, 18, 0, 90, 90)
+    time.sleep(1.5)
+    dofik(angle-28, angle-90, angle-70, angle+85, angle, angle)
+    time.sleep(1.5)
+    dofik(angle-28, angle-90, angle-70, angle+85, angle, angle+57)
+    time.sleep(1.5)
+to_yellow()
